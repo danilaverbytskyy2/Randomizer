@@ -1,30 +1,49 @@
-/* Сброс базовых стилей */
+/* -------------------------------------- */
+/* 1. Сброс отступов и базовые настройки */
+/* -------------------------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Фон всей страницы */
+/* -------------------------------------- */
+/* 2. Центрируем main-content через flex  */
+/* -------------------------------------- */
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa; /* светло-серый фон (Bootstrap-style) */
-  color: #343a40; /* тёмно-серый текст */
+  background-color: #f8f9fa; /* светло-серый фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* убираем скролл */
 }
 
-/* Контейнер для колеса */
+/* Контейнер с колесом и кнопкой */
+#main-content {
+  text-align: center;
+}
+
+/* -------------------------------------- */
+/* 3. Стили для колеса и указателя       */
+/* -------------------------------------- */
 .wheel-container {
+  position: relative;
   width: 500px;
   height: 500px;
+  margin-bottom: 20px;
 }
 
-/* Канвас — колесо */
 #wheel {
+  display: block;
   border-radius: 50%;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Стрелка-поинтер */
 #pointer {
   position: absolute;
   top: -20px;
@@ -34,55 +53,83 @@ body {
   height: 0;
   border-left: 22px solid transparent;
   border-right: 22px solid transparent;
-  border-bottom: 44px solid #dc3545; /* красная (Bootstrap danger) */
+  border-bottom: 44px solid #dc3545; /* красная стрелка */
   z-index: 2;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-/* Кнопка «Крутить колесо» */
-/* Унаследована от Bootstrap, здесь можно добавить чуть больше отступов */
+/* -------------------------------------- */
+/* 4. Стили для кнопки «Крутить колесо»   */
+/* -------------------------------------- */
 #spin-button {
-  min-width: 200px;
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Блок результата */
-#result {
-  margin-top: 30px;
-}
-
-/*Название песни внутри результата*/
-#song-title {
-  color: #495057;
-}
-
-/*Изображение песни внутри результата*/
-#song-image {
-  max-width: 100%;
-  max-height: 300px;
-}
-
-/* Стили для секторов: используем градиент и плавный контур */
-.sector-gradient-0 {
-  background: linear-gradient(135deg, #f6d365, #fda085);
-}
-.sector-gradient-1 {
-  background: linear-gradient(135deg, #84fab0, #8fd3f4);
-}
-.sector-gradient-2 {
-  background: linear-gradient(135deg, #a6c0fe, #f68084);
-}
-.sector-gradient-3 {
-  background: linear-gradient(135deg, #fccb90, #d57eeb);
-}
-.sector-gradient-4 {
-  background: linear-gradient(135deg, #c3cfe2, #c3cfe2);
-}
-.sector-gradient-5 {
-  background: linear-gradient(135deg, #89f7fe, #66a6ff);
-}
-
-/* При наведении на кнопку */
 #spin-button:hover {
+  background-color: #2980b9;
   transform: scale(1.02);
-  transition: transform 0.2s ease;
+}
+
+/* -------------------------------------- */
+/* 5. Оверлей результата                 */
+/* -------------------------------------- */
+#result-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none; /* скрыт по умолчанию */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Контейнер внутри оверлея */
+#overlay-content {
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+  max-width: 90%;
+}
+
+/* Заголовок выбранной песни */
+#overlay-song-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Картинка выбранной песни */
+#overlay-song-image {
+  max-width: 90vw;
+  max-height: 60vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+/* Кнопка «Закрыть» в оверлее */
+#close-overlay {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #ffffff;
+  color: #343a40;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#close-overlay:hover {
+  background-color: #e2e6ea;
+  transform: scale(1.02);
 }
