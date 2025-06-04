@@ -50,7 +50,7 @@ function drawWheel() {
   // Параметры квадрата для фото:
   // imgRadius = 0.5 * outerRadius   → расстояние от центра до центра квадрата
   // imgSize   = 0.5 * outerRadius   → сторона квадрата (~121px)
-  const imgRadius = outerRadius * 0.5; // ≈121px
+  const imgRadius = outerRadius * 0.6; // ≈121px
   const imgSize   = outerRadius * 0.5; // ≈121px
   const border    = 4;                 // толщина рамки
 
