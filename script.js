@@ -170,7 +170,7 @@ spinButton.addEventListener("click", () => {
   const extraAngle = Math.random() * 2 * Math.PI;     // 0…2π
   const totalRotate = extraTurns * 2 * Math.PI + extraAngle;
 
-  const duration   = 5000;
+  const duration   = 8000;
   const startTime  = performance.now();
   const startAngle = currentAngle;
 

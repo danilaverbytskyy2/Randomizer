@@ -16,7 +16,7 @@ html, body {
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa; /* светло-серый фон */
+  background-image: url('img/back.jpg');
   display: flex;
   justify-content: center;
   align-items: center;
