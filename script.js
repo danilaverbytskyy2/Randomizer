@@ -150,7 +150,7 @@ function spinWheel() {
   const extraTurns = Math.floor(Math.random() * 4) + 3;
   const extraAngle = Math.random() * 2 * Math.PI;
   const totalRotate = extraTurns * 2 * Math.PI + extraAngle;
-  const duration = 4000 + Math.random() * 3000;
+  const duration = 6000 + Math.random() * 2000;
   const startTime = performance.now();
   const startAngle = currentAngle;
 
