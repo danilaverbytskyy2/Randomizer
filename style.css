@@ -46,14 +46,14 @@ body {
 
 #pointer {
   position: absolute;
-  top: -20px;
+  top: -20px;       /* Смещаем вверх на высоту стрелки */
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
   border-left: 22px solid transparent;
   border-right: 22px solid transparent;
-  border-bottom: 44px solid #dc3545; /* красная стрелка */
+  border-top: 44px solid #dc3545; /* стрелка теперь вниз */
   z-index: 2;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }

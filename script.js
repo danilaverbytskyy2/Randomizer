@@ -1,11 +1,11 @@
 // ---------------------------------------
 // 1. Массив с песнями: название + путь к изображению (относительно index.html)
 const songs = [
-  { title: "WIFI", image: "img/wifi.jpg" },
-  { title: "Sympathy is a knife", image: "img/sympathy.jpg" },
-  { title: "IT GIRL(Fan Remix)", image: "img/itgirl.jpg" },
-  { title: "СЛАДКО", image: "img/sladko.jpg" },
-  { title: "Applause", image: "img/applause.jpg" }
+  { title: "WIFI", image: "img/wifi.jpg", color: "#040402" },
+  { title: "Sympathy is a knife", image: "img/sympathy.jpg", color: "#06f65d" },
+  { title: "IT GIRL(Fan Remix)", image: "img/itgirl.jpg", color: "#ef7a02" },
+  { title: "СЛАДКО", image: "img/sladko.jpg", color: "#ffffff" },
+  { title: "Applause", image: "img/applause.jpg", color: "#a200ff" }
 ];
 
 // Количество секторов и угол (в радианах) каждого
@@ -80,34 +80,16 @@ function drawWheel() {
     tempCtx.arc(centerX, centerY, outerRadius, startAngle, endAngle);
     tempCtx.closePath();
 
-    // Линейный градиент для фона
+    // Линейный градиент для фона - используем цвет из массива songs
+    const baseColor = songs[i].color;
     const grad = tempCtx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    switch (i % 5) {
-      case 0:
-        grad.addColorStop(0, "#f6d365");
-        grad.addColorStop(1, "#fda085");
-        break;
-      case 1:
-        grad.addColorStop(0, "#84fab0");
-        grad.addColorStop(1, "#8fd3f4");
-        break;
-      case 2:
-        grad.addColorStop(0, "#a6c0fe");
-        grad.addColorStop(1, "#f68084");
-        break;
-      case 3:
-        grad.addColorStop(0, "#fccb90");
-        grad.addColorStop(1, "#d57eeb");
-        break;
-      case 4:
-        grad.addColorStop(0, "#89f7fe");
-        grad.addColorStop(1, "#66a6ff");
-        break;
-    }
-    tempCtx.fillStyle   = grad;
+    grad.addColorStop(0, baseColor);
+    grad.addColorStop(1, lightenColor(baseColor, 40)); // Светлый вариант цвета
+
+    tempCtx.fillStyle = grad;
     tempCtx.fill();
     tempCtx.strokeStyle = "#ffffff";
-    tempCtx.lineWidth   = 2;
+    tempCtx.lineWidth = 2;
     tempCtx.stroke();
 
     const pattern = ctx.createPattern(tempCanvas, "no-repeat");
@@ -115,7 +97,7 @@ function drawWheel() {
     ctx.fill();
 
     ctx.strokeStyle = "#ffffff";
-    ctx.lineWidth   = 2;
+    ctx.lineWidth = 2;
     ctx.stroke();
     ctx.restore();
 
@@ -131,9 +113,9 @@ function drawWheel() {
     const sqY = imgCenterY - imgSize / 2;
 
     // Рисуем рамку (белый фон) квадрата с обводкой
-    ctx.fillStyle   = "#ffffff";
+    ctx.fillStyle = "#ffffff";
     ctx.strokeStyle = "#cccccc";
-    ctx.lineWidth   = border;
+    ctx.lineWidth = border;
     ctx.beginPath();
     ctx.rect(sqX - border/2, sqY - border/2, imgSize + border, imgSize + border);
     ctx.fill();
@@ -150,10 +132,27 @@ function drawWheel() {
     ctx.arc(centerX, centerY, outerRadius, startAngle, endAngle);
     ctx.closePath();
     ctx.strokeStyle = "#ffffff";
-    ctx.lineWidth   = 2;
+    ctx.lineWidth = 2;
     ctx.stroke();
   }
 }
+
+// Функция для осветления цвета
+function lightenColor(color, percent) {
+  const num = parseInt(color.replace("#", ""), 16);
+  const amt = Math.round(2.55 * percent);
+  const R = (num >> 16) + amt;
+  const G = (num >> 8 & 0x00FF) + amt;
+  const B = (num & 0x0000FF) + amt;
+
+  return "#" + (
+    0x1000000 +
+    (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+    (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+    (B < 255 ? B < 1 ? 0 : B : 255)
+  ).toString(16).slice(1);
+}
+
 
 // ---------------------------------------
 // 3. Логика анимации прокрутки колеса
