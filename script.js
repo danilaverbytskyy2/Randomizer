@@ -5,7 +5,8 @@ const songs = [
   { title: "Sympathy is a knife", image: "img/sympathy.jpg", color: "#06f65d" },
   { title: "IT GIRL(Fan Remix)", image: "img/itgirl.jpg", color: "#ef7a02" },
   { title: "СЛАДКО", image: "img/sladko.jpg", color: "#ffffff" },
-  { title: "Applause", image: "img/applause.jpg", color: "#a200ff" }
+  { title: "Applause", image: "img/applause.jpg", color: "#a200ff" },
+  //{ title: "Селфхарм", image: "img/selfharm.jpg", color: "#ff0000" }
 ];
 
 // Количество секторов и угол (в радианах) каждого
