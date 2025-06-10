@@ -1,11 +1,11 @@
 // ---------------------------------------
 // 1. Массив с песнями: название + путь к изображению (относительно index.html)
 const songs = [
-  { title: "WIFI", image: "img/wifi.jpg", color: "#040402" },
-  { title: "Sympathy is a knife", image: "img/sympathy.jpg", color: "#06f65d" },
-  { title: "IT GIRL(Fan Remix)", image: "img/itgirl.jpg", color: "#ef7a02" },
+  { title: "WIFI", image: "img/wifi.jpg", color: "#020001" },
+  { title: "Sympathy is a knife", image: "img/sympathy.jpg", color: "#9cf231" },
+  { title: "IT GIRL(Fan Remix)", image: "img/itgirl.jpg", color: "#fc6202" },
   { title: "СЛАДКО", image: "img/sladko.jpg", color: "#ffffff" },
-  { title: "Applause", image: "img/applause.jpg", color: "#a200ff" },
+  { title: "Applause", image: "img/applause.jpg", color: "#c552e5" },
   //{ title: "Селфхарм", image: "img/selfharm.jpg", color: "#ff0000" }
 ];
 
@@ -85,7 +85,7 @@ function drawWheel() {
     const baseColor = songs[i].color;
     const grad = tempCtx.createLinearGradient(0, 0, canvas.width, canvas.height);
     grad.addColorStop(0, baseColor);
-    grad.addColorStop(1, lightenColor(baseColor, 40)); // Светлый вариант цвета
+    //grad.addColorStop(1, lightenColor(baseColor, 40)); // Светлый вариант цвета
 
     tempCtx.fillStyle = grad;
     tempCtx.fill();
