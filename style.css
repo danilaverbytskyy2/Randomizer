@@ -70,6 +70,8 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
+  width: auto; /* Автоматическая ширина по содержимому */
+  margin: 0 auto; /* Центрирование по горизонтали */
 }
 
 #spin-button:hover {
@@ -145,6 +147,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   max-height: 60vh;
   overflow-y: auto;
+  width: 270px; /* Фиксированная ширина панели */
 }
 
 #song-controls h3 {
